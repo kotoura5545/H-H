@@ -1,0 +1,31 @@
+
+<html>
+  <head>
+    <title>HHIndex</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 border">
+          <header>
+            <%= link_to root_path do %>
+              <div class="header_box">
+                <%= image_tag("book4.png", size: "450x160") %>
+                <p>ハンターハンター辞典</p>
+              </div>
+            <% end %>
+              <div class="search_box">
+                <P>検索ワード</P>
+              </div>
+          </header><!-- /header -->
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

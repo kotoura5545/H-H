@@ -1,0 +1,28 @@
+<%= form_for @article, url:adconsiderations_path do |f| %>
+<div class="field">
+	<%= f.hidden_field :authenticity_token, value: form_authenticity_token, id:'authenticity_token'%>
+	<label>title</label><br>
+	<%= f.text_field :title %><br>
+	<label>detail</label>
+	<%= f.text_area :detail, class: "book_content",id:"book_content" %>
+	<%= f.submit :登録　%>
+</div>
+<% end %>
+<script>
+	var token = $('#authenticity_token').val();
+	console.log(token);
+	$(function() {
+		$('#book_content').froalaEditor({
+			imageUploadURL: '/upload_image'
+			,imageUploadParam: 'image_param'
+			,requestHeaders:{
+				'X-CSRF-Token':token
+			}
+		})
+		.on('froalaEditor.image.error',function(e,editor,error,response){
+			console.log(error);
+			console.log(response);
+
+		});
+	});
+</script>

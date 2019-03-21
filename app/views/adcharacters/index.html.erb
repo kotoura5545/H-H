@@ -1,0 +1,42 @@
+<div id="accordion" class="accordionbox">
+    <dl class="accordionlist">
+        <%Character.chapters.each_key do |key|%>
+        <div class="sample">
+            <dt class="clearfix index" onclick="index(this.parentNode)">
+                <div class="title">
+                    <p><%=key %></p>
+                </div>
+                <p class="accordion_icon"><span></span><span></span></p>
+            </dt>
+            <% @characters = Character.where(chapter: key) %>
+            <% @group = [] %>
+            <% @characters.each do |character| %>
+                <% character.group_list.each do |group| %>
+                    <div class="sample1">
+                        <% if @group.include?(group) %>
+                        <% else %>
+                            <dt class="clearfix index1" onclick="index1(this.parentNode)">
+                                <div class="title">
+                                    <p><%= group %></p>
+                                </div>
+                                <p class="accordion_icon"><span></span><span></span></p>
+                            </dt>
+                            <% Character.tagged_with(group).each do |chara| %>
+                                <div class="index2"><%= attachment_image_tag chara, :character_image, size: '50x50', class: "type1"%><%= link_to chara.name, adcharacter_path(chara), class: "type2"%></div>
+                            <% end %>
+                            <% @group.push(group) %>
+                       <% end %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+        <% end %>
+        <dt class="clearfix">
+            <div class="title">
+                <p>＋、－切り替え</p>
+            </div>
+            <p class="accordion_icon"><span></span><span></span></p>
+        </dt>
+        <dd>＋、－切り替え</dd>
+    </dl>
+</div>

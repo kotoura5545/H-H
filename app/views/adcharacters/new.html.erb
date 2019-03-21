@@ -1,0 +1,19 @@
+<%= bootstrap_form_for @character,url:adcharacters_path do |f| %>
+<label>章</label>
+<%= f.select :chapter, Character.chapters.keys.to_a %>
+<label>人物画像</label>
+<%= f.attachment_field :character_image %>
+<label>人物名</label>
+<%= f.text_field :name %>
+<label>系統</label>
+<%= f.select :menu, Character.menus.keys.to_a %>
+<label>念</label>
+<%= f.text_field :nenn_name %>
+<label>所属団体</label>
+<%= text_field_tag 'character[group_list]', @character.group_list.join(',') %><br>
+<label>人物詳細</label>
+<%= f.text_area :detail %>
+<%= f.submit :登録　%>
+<% end %>
+
+

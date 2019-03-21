@@ -1,0 +1,2 @@
+module AdconsiderationHelper
+end

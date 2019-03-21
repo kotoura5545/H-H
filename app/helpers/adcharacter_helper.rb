@@ -1,0 +1,2 @@
+module AdcharacterHelper
+end
