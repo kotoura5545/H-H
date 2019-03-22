@@ -1,4 +1,6 @@
 <link href = "../css/froala_style.min.css" rel = "スタイルシート" type = "text / css" />
-<%= @article.title %>
+<div class = "title">
+	<%= @article.title %>
+</div>
 <div class = "fr-view" ><%= @article.detail.html_safe %>
 </div>

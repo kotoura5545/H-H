@@ -1,28 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- Include external CSS. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+
+  <!-- Include Editor style. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!-- Include external JS libs. -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+
+  <!-- Include Editor JS files. -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
+
 <%= form_for @article, url:adconsiderations_path do |f| %>
 <div class="field">
 	<%= f.hidden_field :authenticity_token, value: form_authenticity_token, id:'authenticity_token'%>
 	<label>title</label><br>
 	<%= f.text_field :title %><br>
 	<label>detail</label>
-	<%= f.text_area :detail, class: "book_content",id:"book_content" %>
+	<%= f.text_area :detail,id:"edit-basic" %>
 	<%= f.submit :登録　%>
 </div>
 <% end %>
 <script>
 	var token = $('#authenticity_token').val();
-	console.log(token);
-	$(function() {
-		$('#book_content').froalaEditor({
-			imageUploadURL: '/upload_image'
-			,imageUploadParam: 'image_param'
-			,requestHeaders:{
+    $(function() {
+      // Upload images basic example.
+      $('#edit-basic').froalaEditor({
+        // Set the file upload URL.
+        requestHeaders:{
 				'X-CSRF-Token':token
-			}
-		})
-		.on('froalaEditor.image.error',function(e,editor,error,response){
-			console.log(error);
-			console.log(response);
-
-		});
-	});
+			},
+        imageUploadURL: '<%= froala_upload_image_path %>',
+        imageManagerLoadURL: '<%= froala_load_images_path %>',
+        imageManagerDeleteURL: '<%= froala_delete_image_path %>',
+        fileUploadURL: '<%= froala_upload_file_path %>',
+        videoUploadURL: '<%= froala_upload_video_path %>',
+      }).on('froalaEditor.file.unlink', function (e, editor, link) {
+        $.ajax({
+          // Request method.
+          method: 'POST',
+          // Request URL.
+          url: '<%= froala_delete_file_path %>',
+          // Request params.
+          data: {
+            src: link.getAttribute("href")
+          }
+        })
+        .done (function (data) {
+          console.log ('File was deleted');
+        })
+        .fail (function (err) {
+          console.log ('File delete problem: ' + JSON.stringify(err));
+        })
+      }).on('froalaEditor.image.removed', function (e, editor, $img) {
+        $.ajax({
+          // Request method.
+          method: 'POST',
+          // Request URL.
+          url: '<%= froala_delete_image_path %>',
+          // Request params.
+          data: {
+            src: $img.attr("src")
+          }
+        })
+        .done (function (data) {
+          console.log ('File was deleted');
+        })
+        .fail (function (err) {
+          console.log ('File delete problem: ' + JSON.stringify(err));
+        })
+      });
+  });
 </script>
