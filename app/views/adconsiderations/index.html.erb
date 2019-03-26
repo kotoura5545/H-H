@@ -1,2 +1,15 @@
-<h1>Adconsideration#index</h1>
-<p>Find me in app/views/adconsideration/index.html.erb</p>
+<div id="accordion" class="accordionbox">
+    <dl class="accordionlist">
+        <% @articles.each do |art|%>
+        <%= link_to adconsideration_path(art) do %>
+        <div class="sample">
+            <dt class="clearfix index">
+                <div class="title">
+                    <p><%=art.title %></p>
+                </div>
+            </dt>
+        </div>
+        <% end %>
+        <% end %>
+    </dl>
+</div>

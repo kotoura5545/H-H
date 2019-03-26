@@ -21,25 +21,25 @@
   <!-- Include Editor JS files. -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
 
-<%= form_for @article, url:adconsiderations_path do |f| %>
-<div class="field">
-	<%= f.hidden_field :authenticity_token, value: form_authenticity_token, id:'authenticity_token'%>
-	<label>title</label><br>
-	<%= f.text_field :title %><br>
-	<label>detail</label>
-	<%= f.text_area :detail,id:"edit-basic" %>
-	<%= f.submit :登録　%>
-</div>
-<% end %>
-<script>
-	var token = $('#authenticity_token').val();
-    $(function() {
+  <%= form_for @article, url:adconsideration_path(@article),method: :patch do |f| %>
+  <div class="field">
+   <%= f.hidden_field :authenticity_token, value: form_authenticity_token, id:'authenticity_token'%>
+   <label>title</label><br>
+   <%= f.text_field :title %><br>
+   <label>detail</label>
+   <%= f.text_area :detail,id:"edit-basic" %>
+   <%= f.submit :登録　%>
+ </div>
+ <% end %>
+ <script>
+   var token = $('#authenticity_token').val();
+   $(function() {
       // Upload images basic example.
       $('#edit-basic').froalaEditor({
         // Set the file upload URL.
         requestHeaders:{
-				'X-CSRF-Token':token
-			},
+          'X-CSRF-Token':token
+        },
         imageUploadURL: '<%= froala_upload_image_path %>',
         imageManagerLoadURL: '<%= froala_load_images_path %>',
         imageManagerDeleteURL: '<%= froala_delete_image_path %>',
@@ -80,5 +80,7 @@
           console.log ('File delete problem: ' + JSON.stringify(err));
         })
       });
-  });
-</script>
+    });
+  </script>
+</body>
+</html>

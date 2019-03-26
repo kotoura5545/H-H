@@ -8,11 +8,11 @@
         <div class="col-md-4 black_border1 float size ht red"><p>名前</p></div>
         <div class="col-md-8 black_border3 float size ht red"><p><%= @character.name %></p></div>
         <div class="col-md-4 black_border1 float size ht green"><p>系統</p></div>
-        <div class="col-md-8 black_border3 float size ht green"><p><%= @character.menu %></p></div>
+        <div class="col-md-8 black_border float size ht green"><p><%= @character.menu %></p></div>
         <div class="col-md-4 black_border1 float size ht blue"><p>念能力</p></div>
-        <div class="col-md-8 black_border3 float size ht blue"><p><%= @character.nenn_name %></p></div>
-        <div class="col-md-4 black_border1 float size ht yellow"><p>所属団体</p></div>
-        <div class="col-md-8 black_border3 float size ht yellow">
+        <div class="col-md-8 black_border float size ht blue"><p><%= @character.nenn_name %></p></div>
+        <div class="col-md-4 black_border2 float size ht yellow"><p>所属団体</p></div>
+        <div class="col-md-8 black_border float size ht yellow">
           <% @character.group_list.each do |group| %>
           <p><%= group %></p>
           <% end %>
@@ -21,6 +21,6 @@
     </div>
   </div>
   <div class="row">
-    <div class="row black_border2 detail size2"><p><%= @character.detail %></p></div>
+    <div class="row detail size2"><p><%= @character.detail %></p></div>
   </div>
 </div>

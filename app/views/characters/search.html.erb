@@ -1,0 +1,16 @@
+<div id="accordion" class="accordionbox">
+    <dl class="accordionlist">
+        <% @search_articles.each do |art|%>
+        <%= link_to adcharacter_path(art) do %>
+        <div class="sample">
+            <dt class="clearfix index">
+                <div class="title">
+                    <%= attachment_image_tag art, :character_image, size: '50x50'%>
+                    <p><%=art.name %></p>
+                </div>
+            </dt>
+        </div>
+        <% end %>
+        <% end %>
+    </dl>
+</div>

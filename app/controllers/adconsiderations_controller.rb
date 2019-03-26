@@ -1,5 +1,6 @@
 class AdconsiderationsController < ApplicationController
 
+
   def show
     @article = Consideration.find(params[:id])
   end
@@ -15,11 +16,13 @@ class AdconsiderationsController < ApplicationController
   end
 
   def edit
-
+    @article = Consideration.find(params[:id])
   end
 
   def update
-
+    @article = Consideration.find(params[:id])
+    @article.update(consideration_params)
+    redirect_to adconsideration_path(@article)
   end
 
   def delete
@@ -41,6 +44,8 @@ class AdconsiderationsController < ApplicationController
     }
 
     @aws_data = FroalaEditorSDK::S3.data_hash(options)
+
+    @articles = Consideration.all
   end
 
   # Upload file.

@@ -1,2 +1,6 @@
-<h1>Consideration#show</h1>
-<p>Find me in app/views/consideration/show.html.erb</p>
+<link href = "../css/froala_style.min.css" rel = "スタイルシート" type = "text / css" />
+<div class = "title1">
+	<%= @article.title %>
+</div>
+<div class = "fr-view" ><%= @article.detail.html_safe %>
+</div>

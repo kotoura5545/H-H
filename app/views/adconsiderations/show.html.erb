@@ -1,6 +1,8 @@
 <link href = "../css/froala_style.min.css" rel = "スタイルシート" type = "text / css" />
-<div class = "title">
+<div class = "title1">
 	<%= @article.title %>
 </div>
 <div class = "fr-view" ><%= @article.detail.html_safe %>
 </div>
+<%= link_to 'Edit', edit_adconsideration_path(params[:id]) %>
+<%= link_to 'Destroy', adconsideration_path(params[:id]), method: :delete, data: { confirm: 'Are you sure?' } %>

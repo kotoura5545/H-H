@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@character) @character,url:adcharacters_path do |f| %>
+<%= bootstrap_form_for @character,url:adcharacter_path(@character),method: :patch do |f| %>
 <label>章</label>
 <%= f.select :chapter, Character.chapters.keys.to_a %>
 <label>人物画像</label>

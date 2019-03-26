@@ -54,13 +54,13 @@ function index(node){
 	}
 	$(node).children(".sample1").children(".index1").slideToggle();
 	// activeが存在する場合
-	if ($(this).children(".accordion_icon").hasClass('active')) {
+	if ($(node).children(".index").children(".accordion_icon").hasClass('active')) {
 		// activeを削除
-		$(this).children(".accordion_icon").removeClass('active');
+		$(node).children(".index").children(".accordion_icon").removeClass('active');
 	}
 	else {
 		// activeを追加
-		$(this).children(".accordion_icon").addClass('active');
+		$(node).children(".index").children(".accordion_icon").addClass('active');
 	}
 }
 
@@ -72,12 +72,12 @@ function index1(node1){
 		$(node1).children(".index2").addClass("active1");
 		$(node1).children(".index1").addClass('active1');
 		}
-		if ($(this).children(".accordion_icon").hasClass('active')) {			
+		if ($(node1).children(".index1").children(".accordion_icon").hasClass('active')) {			
 			// activeを削除
-			$(this).children(".accordion_icon").removeClass('active');				
+			$(node1).children(".index1").children(".accordion_icon").removeClass('active');				
 		}
 		else {
 			// activeを追加
-			$(this).children(".accordion_icon").addClass('active');
+			$(node1).children(".index1").children(".accordion_icon").addClass('active');
 		}
 }

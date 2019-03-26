@@ -74,3 +74,4 @@ gem 'trix'
 gem 'wysiwyg-rails', '~> 2.6.0'
 gem "font-awesome-sass", '~> 4.4'
 gem "froala-editor-sdk"
+gem 'ransack'

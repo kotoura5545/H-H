@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-	root "character#index"
+	root "characters#index"
+	get "characters/search" => "characters#search"
 	resources :adcharacters
 	resources :characters, only: [:index, :show]
 	resources :considerations, only: [:index, :show]
