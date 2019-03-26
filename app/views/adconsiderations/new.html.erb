@@ -21,7 +21,7 @@
   <!-- Include Editor JS files. -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
 
-  <%= form_for @article, url:adconsideration_path(@article),method: :patch do |f| %>
+  <%= form_for @article, url:adconsiderations_path,method: :post do |f| %>
   <div class="field">
    <%= f.hidden_field :authenticity_token, value: form_authenticity_token, id:'authenticity_token'%>
    <label>title</label><br>

@@ -7,6 +7,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 <body class="body">
   <div class="container">
@@ -15,13 +16,13 @@
         <header>
           <%= link_to root_path do %>
           <div class="header_box">
-            <%= image_tag("book4.png", size: "450x160") %>
+            <%= image_tag("book4.png") %>
             <p>ハンターハンター辞典</p>
           </div>
           <% end %>
           <div class= "clearfix search_box">
               <%= search_form_for @search, url: "characters/search" do |f| %>
-            <div class="search_box1", style="width: 30%;">
+            <div class="search_box1">
               <%= f.search_field :name_cont %><%= f.submit "検索" %>
             </div>
             <% end %>
