@@ -1,3 +1,26 @@
-// Place all the styles related to the consideration controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.title1{
+	margin: 0 auto;
+	font-weight: bold;
+	text-align: center;
+	color: brown;
+	font-size: 2em;
+	border-bottom: double;
+}
+.accordionbox{
+	width: 50%;
+	margin: 10px auto 40px;
+	padding: 20px;
+}
+.index_box{
+    background-color: rgba(208, 139, 0, 0.5);
+    padding: 20px 0 10px 5px;
+    border-top: 1px solid #DFDFDF;
+    border-bottom: 1px solid #DFDFDF;
+}
+.accordionlist dt:first-child{
+    border-top: none !important;
+}
+.accordionlist dt .title{
+    padding-left: 10px;
+	float: left;
+}

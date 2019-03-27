@@ -22,7 +22,7 @@
                                 <p class="accordion_icon"><span></span><span></span></p>
                             </dt>
                             <% Character.tagged_with(group).each do |chara| %>
-                                <div class="index2"><%= attachment_image_tag chara, :character_image, size: '50x50', class: "type1"%><%= link_to chara.name, adcharacter_path(chara), class: "type2"%></div>
+                                <div class="index2"><%= attachment_image_tag chara, :character_image, size: '50x50', class: "type1"%><%= link_to chara.name, character_path(chara), class: "type2"%></div>
                             <% end %>
                             <% @group.push(group) %>
                        <% end %>
