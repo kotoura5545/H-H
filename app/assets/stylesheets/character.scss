@@ -39,10 +39,10 @@
 }
 .ht{
 	height: 50px;
-	word-wrap: break-word;
 }
 .ht p{
 	line-height: 49px;
+	overflow-wrap:break-spaces;
 }
 .red{
 	color: rgba(255,99,102,0.7);
